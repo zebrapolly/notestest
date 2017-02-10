@@ -7,15 +7,16 @@ export default class AddNoteForm extends Component{
     }
     submitHandle(e){
         e.preventDefault();
-        console.log(this.noteInput.value);
-        this.props.submitForm(this.noteInput.value);
-        this.noteInput.value = ''
+        this.props.submitForm({title: this.noteInputTitle.value, text: this.noteInputText.value});
+        this.noteInputTitle.value = ''
+        this.noteInputText.value = ''
     }
     render() {
         return <div>
             <form onSubmit={this.submitHandle}>
                 <h2> Form to add Notes </h2>
-                <input ref={(input) => {this.noteInput = input}}/>
+                <input ref={(input) => {this.noteInputTitle = input}}/>
+                <input ref={(input) => {this.noteInputText = input}}/>
                 <button type="onSubmit">Add Note</button>
             </form>
             </div>

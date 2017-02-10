@@ -6,8 +6,8 @@ import { addNote } from '../actions'
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        submitForm: (text) => {
-            dispatch(addNote(text))
+        submitForm: (note) => {
+            dispatch(addNote(note))
         }
     }
 }
