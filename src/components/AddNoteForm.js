@@ -5,6 +5,7 @@ export default class AddNoteForm extends Component{
         super(props);
         this.submitHandle = this.submitHandle.bind(this);
     }
+
     submitHandle(e){
         e.preventDefault();
         this.props.submitForm({title: this.noteInputTitle.value, text: this.noteInputText.value});
@@ -19,6 +20,7 @@ export default class AddNoteForm extends Component{
                 <input ref={(input) => {this.noteInputText = input}}/>
                 <button type="onSubmit">Add Note</button>
             </form>
+            <button onClick={this.props.onGetNotes}>Get Notes</button>
             </div>
     }
 }

@@ -4,6 +4,7 @@ const Router = require('koa-router');
 const favicon = require('koa-favicon');
 const convert = require('koa-convert');
 const bodyParser = require('koa-bodyparser');
+const cors = require('koa-cors');
 
 mongoose.Promise = Promise;
 mongoose.connect('mongodb://127.0.0.1:27017/notes');
@@ -18,14 +19,18 @@ router
         ctx.body = 'test';
     })
     .get('/notes', async (ctx) => {
-        ctx.body = await Note.find();
+        console.log('get notes');
+        ctx.body = await Note.find({});
+        console.log(ctx.body);
     })
     .post('/notes', async (ctx) => {
+        console.log(ctx.request.body);
         await Note.create({title: ctx.request.body.title, text: ctx.request.body.text});
         ctx.body = ctx.request.body;
     });
 
 app
+    .use(convert(cors()))
     .use(convert(bodyParser({
         jsonLimit: '56kb'
     })))
