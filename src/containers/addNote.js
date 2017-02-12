@@ -9,7 +9,6 @@ const mapDispatchToProps = (dispatch) => {
             dispatch(addNote(note))
         },
         onGetNotes: () => {
-            console.log('onGetNotes');
             dispatch(GetNotes());
         }
     }

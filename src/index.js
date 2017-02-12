@@ -4,6 +4,8 @@ import App from './components/App';
 import './index.css';
 import { Provider } from 'react-redux'
 import confStore from './store'
+import 'bootstrap/dist/css/bootstrap.css';
+import '../public/dist/css/cosmo.css';
 
 const store = confStore()
 

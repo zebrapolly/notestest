@@ -1,11 +1,15 @@
 import React, {Component} from 'react';
+import { Col, Grid, Button, FormControl, FormGroup} from 'react-bootstrap';
+
 
 export default class AddNoteForm extends Component{
     constructor(props) {
         super(props);
         this.submitHandle = this.submitHandle.bind(this);
     }
-
+    componentWillMount(){
+        this.props.onGetNotes()
+    }
     submitHandle(e){
         e.preventDefault();
         this.props.submitForm({title: this.noteInputTitle.value, text: this.noteInputText.value});
@@ -13,14 +17,29 @@ export default class AddNoteForm extends Component{
         this.noteInputText.value = ''
     }
     render() {
-        return <div>
-            <form onSubmit={this.submitHandle}>
-                <h2> Form to add Notes </h2>
-                <input ref={(input) => {this.noteInputTitle = input}}/>
-                <input ref={(input) => {this.noteInputText = input}}/>
-                <button type="onSubmit">Add Note</button>
-            </form>
-            <button onClick={this.props.onGetNotes}>Get Notes</button>
-            </div>
+        return <Grid className="addNoteForm">
+            <Col lg={6} lgPush={3}>
+                <h3> Form to add Notes </h3>
+                <form onSubmit={this.submitHandle}>
+                    <FormGroup>
+                        <FormControl
+                            type="text"
+                            inputRef={(input) => {this.noteInputTitle = input}}
+                            placeholder="Enter title"
+                            />
+                    </FormGroup>
+                    <FormGroup>
+                        <FormControl
+                            type="text"
+                            inputRef={(input) => {this.noteInputText = input}}
+                            placeholder="Enter text"
+                            />
+                    </FormGroup>
+                        <Button type="submit">Add Note</Button>
+
+                </form>
+            </Col>
+        </Grid>
+
     }
 }

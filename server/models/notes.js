@@ -6,6 +6,9 @@ const noteSchema = new mongoose.Schema({
     },
     text: {
         type: String
+    },
+    noteid:{
+        type: String
     }
 });
 

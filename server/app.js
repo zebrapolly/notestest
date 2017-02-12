@@ -23,9 +23,15 @@ router
         ctx.body = await Note.find({});
         console.log(ctx.body);
     })
+    .delete('/notes/:id', async (ctx) => {
+        console.log(ctx.request.body);
+        await Note.remove({id: ctx.params.id});
+        console.log('user deleted');
+        ctx.body = ctx.request.body;
+    })
     .post('/notes', async (ctx) => {
         console.log(ctx.request.body);
-        await Note.create({title: ctx.request.body.title, text: ctx.request.body.text});
+        await Note.create({title: ctx.request.body.title, text: ctx.request.body.text, noteid: ctx.request.body.id});
         ctx.body = ctx.request.body;
     });
 
