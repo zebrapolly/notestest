@@ -7,9 +7,6 @@ export default class AddNoteForm extends Component{
         super(props);
         this.submitHandle = this.submitHandle.bind(this);
     }
-    componentWillMount(){
-        this.props.onGetNotes()
-    }
     submitHandle(e){
         e.preventDefault();
         this.props.submitForm({title: this.noteInputTitle.value, text: this.noteInputText.value, noteid: +(new Date())});

@@ -19,19 +19,23 @@ router
         ctx.body = 'test';
     })
     .get('/notes', async (ctx) => {
-        console.log('get notes');
+        //console.log('get notes');
         ctx.body = await Note.find({});
         console.log(ctx.body);
     })
     .delete('/notes/:id', async (ctx) => {
-        console.log(ctx.request.body);
+        //console.log(ctx.request.body);
         await Note.remove({noteid: ctx.params.id});
-        console.log('user deleted');
+        //console.log('user deleted');
         ctx.body = ctx.request.body;
     })
     .post('/notes', async (ctx) => {
-        console.log(ctx.request.body);
+        //console.log(ctx.request.body);
         await Note.create({title: ctx.request.body.title, text: ctx.request.body.text, noteid: ctx.request.body.noteid});
+        ctx.body = ctx.request.body;
+    })
+    .put('/notes/:id', async (ctx) => {
+        await Note.update({noteid: ctx.params.id} , {$set: {title: ctx.request.body.title, text: ctx.request.body.text}});
         ctx.body = ctx.request.body;
     });
 
