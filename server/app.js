@@ -25,13 +25,13 @@ router
     })
     .delete('/notes/:id', async (ctx) => {
         console.log(ctx.request.body);
-        await Note.remove({id: ctx.params.id});
+        await Note.remove({noteid: ctx.params.id});
         console.log('user deleted');
         ctx.body = ctx.request.body;
     })
     .post('/notes', async (ctx) => {
         console.log(ctx.request.body);
-        await Note.create({title: ctx.request.body.title, text: ctx.request.body.text, noteid: ctx.request.body.id});
+        await Note.create({title: ctx.request.body.title, text: ctx.request.body.text, noteid: ctx.request.body.noteid});
         ctx.body = ctx.request.body;
     });
 

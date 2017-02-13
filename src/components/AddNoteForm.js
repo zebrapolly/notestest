@@ -12,7 +12,7 @@ export default class AddNoteForm extends Component{
     }
     submitHandle(e){
         e.preventDefault();
-        this.props.submitForm({title: this.noteInputTitle.value, text: this.noteInputText.value});
+        this.props.submitForm({title: this.noteInputTitle.value, text: this.noteInputText.value, noteid: +(new Date())});
         this.noteInputTitle.value = ''
         this.noteInputText.value = ''
     }

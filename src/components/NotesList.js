@@ -17,7 +17,7 @@ export default class AddNoteForm extends Component{
         const noteItems = this.props.notes.map((note, index) =>
                 <Panel header={note.title} key={index} eventKey={index}>
                     <p className="note-text">{note.text}</p>
-                    <p className="note-text">{note.id}</p>
+                    <p className="note-text">{note.noteid}</p>
                     <Button bsSize="small" bsStyle="danger" onClick={() => this.deleteHandle(note)}>Delete note</Button>
                     <Button bsSize="small" bsStyle="info">Edit note</Button>
                 </Panel>

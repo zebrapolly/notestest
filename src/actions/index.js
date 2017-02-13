@@ -2,7 +2,7 @@ import fetch from 'isomorphic-fetch';
 
 export const deleteNote = (note) => dispatch => {
     //console.log(note);
-    fetch(`//127.0.0.1:8080/notes/${note._id}`,{
+    fetch(`//127.0.0.1:8080/notes/${note.noteid}`,{
         method: 'DELETE',
         headers: {
             "Content-Type": "application/json"
@@ -17,7 +17,6 @@ export const deleteNote = (note) => dispatch => {
 
         })
         .then(function(note) {
-            //console.log(note);
             dispatch({ type: 'DELETE_NOTE', note: note })
         });
 

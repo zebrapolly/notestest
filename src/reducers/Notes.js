@@ -4,20 +4,16 @@ export default function userstate(state = [], action) {
         case 'ADD_NOTE':
             return [
                 ...state,
-                {
-                    title: action.note.title,
-                    text: action.note.text,
-                    id: +(new Date())
-                }
+                action.note
             ];
         case 'FETCH_NOTES_SUCCESS':
             return action.notes;
         case 'DELETE_NOTE':
             console.log(action);
-            const noteId = action.note.id;
+            const noteId = action.note.noteid;
             console.log(noteId);
             console.log(state);
-            return state.filter(notes => notes.id !== noteId);
+            return state.filter(notes => notes.noteid !== noteId);
         default :
             return state;
     }
